@@ -1,0 +1,50 @@
+
+.navbar-nav{
+    
+}
+
+.index{
+    display: flex;      
+    font-size: 30;        
+    justify-content: space-around;
+    padding-top: 60px;
+
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    border: solid 3px #000000;
+}
+
+.menu{
+    font-family: 'Yu Gothic UI',sans-serif;
+    width: 20%;
+    height: 100px;
+    overflow-y:scroll;
+    word-break : break-all;
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+}
+
+.menu::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+    display:none;
+}
+
+.nav-link{
+   margin-left: 20px;
+}
+
+.navbar-brand{
+    margin-left: 20px;
+    font-family: 'Impact',sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.container{
+    border: solid;
+    border-color: #1b6ece;
+}
+
+.yohaku{
+    margin-top: 200px;
+}
