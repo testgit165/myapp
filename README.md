@@ -16,3 +16,9 @@ TOPページの新規登録押下、ユーザ登録後、勤怠押下で勤怠�
 + 投稿編集機能
 + コメント機能
 + ソート機能
+
+## 環境
++ Laravel Framework 8.41.0
++ PHP Version 7.3.24
++ MySQL 5.7.34 Homebrew
++ Apache 2.4.46
