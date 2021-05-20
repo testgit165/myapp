@@ -31,16 +31,12 @@
     font-size: 30px; */
 }
 
-.yohaku{
-    margin-left: 20%;
-}
-
 .button{
     display: flex;  
 }
 
 .py-4{
-    /* margin-left: 20%; */
+    margin-left: 20%;
 }
 
 .btn-warning{

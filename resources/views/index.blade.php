@@ -3,8 +3,6 @@
 @section('content')
 
 <a href = " {{ action('App\Http\Controllers\KanriController@create') }} " class="btn btn-warning">勤怠入力</a><br>
-
-<div class = "yohaku">
 <table class = "table">
     <tr>
         <th class = "clom-color">ステータス</th>
@@ -24,7 +22,7 @@
             <td>    {{ $kanri -> created_at }}</td>
             <td>    {{ $kanri -> bikou }}</td>
        
-        @if ( Auth::id()  == $kanri->user_id)
+    @if ( Auth::id()  == $kanri->user_id)
             <td>
                 <div class = "button">
                     <form method="post" action="{{ route('delete',$kanri->id) }}">
@@ -40,7 +38,7 @@
     @else
     <td></td>
     @endif
-</div>
+<!-- </div> -->
 
 @endforeach 
 
