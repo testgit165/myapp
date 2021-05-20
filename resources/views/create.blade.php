@@ -4,7 +4,7 @@
 
 <form method='POST' action="{{ route('store') }}" enctype="multipart/form-data">
 @csrf
-    <div class="form">
+    <div class="yohaku">
 
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input value="出勤" type="radio" class="btn-check" name="info" id="btnradio1" autocomplete="off" checked="checked">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="form-bikou">
-            <label for="bikou">備考</label> 
+            <label for="bikou">備考</label><br>
             <input type = "text" name="bikou">
         </div>
 

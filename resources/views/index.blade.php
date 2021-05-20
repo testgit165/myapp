@@ -3,6 +3,8 @@
 @section('content')
 
 <a href = " {{ action('App\Http\Controllers\KanriController@create') }} " class="btn btn-warning">勤怠入力</a><br>
+
+<div class = "yohaku">
 <table class = "table">
     <tr>
         <th class = "clom-color">ステータス</th>
@@ -38,7 +40,7 @@
     @else
     <td></td>
     @endif
-<!-- </div> -->
+</div>
 
 @endforeach 
 

@@ -25,14 +25,14 @@
 }
 
 .navbar-brand{
-    margin-left: 20px;
+    /* margin-left: 20px;
     font-family: 'Impact',sans-serif;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 30px; */
 }
 
 .yohaku{
-    margin-top: 200px;
+    margin-left: 20%;
 }
 
 .button{
@@ -40,11 +40,11 @@
 }
 
 .py-4{
-    margin-left: 20%;
+    /* margin-left: 20%; */
 }
 
 .btn-warning{
-    margin-left: 83%;
+    margin-left: 88%;
 }
 
 .table{
@@ -63,3 +63,4 @@
 .clom-color{
     color: rgb(55, 156, 8);
 }
+
