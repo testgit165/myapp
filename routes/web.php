@@ -2,24 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', 'App\Http\Controllers\KanriController@index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('create', 'App\Http\Controllers\KanriController@create');
-});
+    Route::post('/create/store', 'App\Http\Controllers\KanriController@store')->name('store');
 
-Route::post('/create/store', 'App\Http\Controllers\KanriController@store')->name('store');
+Route::post('/kanris/delete/{id}','App\Http\Controllers\KanriController@destroy')->name('delete');
+
+Route::get('/kanris/edit/{id}','App\Http\Controllers\KanriController@edit')->name('edit');
+
+Route::post('/kanris/update/{id}','App\Http\Controllers\KanriController@update')->name('update');
+
+});
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// 予備
+// Route::post('/create/store', 'App\Http\Controllers\KanriController@store')->name('store');
+
+// Route::post('/kanris/delete/{id}','App\Http\Controllers\KanriController@destroy')->name('delete');
+
+// Route::get('/kanris/edit/{id}','App\Http\Controllers\KanriController@edit')->name('edit');
+
+// Route::post('/kanris/update/{id}','App\Http\Controllers\KanriController@update')->name('update');
+
+

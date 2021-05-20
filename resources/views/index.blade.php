@@ -2,44 +2,43 @@
 
 @section('content')
 
-<a href = " {{ action('App\Http\Controllers\KanriController@create') }} ">勤怠</a>
-
+<a href = " {{ action('App\Http\Controllers\KanriController@create') }} " class="btn btn-warning">勤怠入力</a><br>
+<table class = "table">
+    <tr>
+        <th class = "clom-color">ステータス</th>
+        <th class = "clom-color">名前</th>
+        <th class = "clom-color">出勤時刻</th>
+        <th class = "clom-color">備考</th>
+        <th></th>
+    </tr>
+</table>
 
 @foreach($kanris as $kanri) 
-<div class = "index">
-    
 
-    <div class = "menu">
-        <h3>ステータス</h3>
-            {{ $kanri -> info }}<br>
-    </div>
+    <table class = "table">
+        <tr>
+            <td>    {{ $kanri -> info }}</td>
+            <td>    {{ $kanri -> user -> name }}</td>
+            <td>    {{ $kanri -> created_at }}</td>
+            <td>    {{ $kanri -> bikou }}</td>
+       
+        @if ( Auth::id()  == $kanri->user_id)
+            <td>
+                <div class = "button">
+                    <form method="post" action="{{ route('delete',$kanri->id) }}">
+                    @csrf
+                    <input type="submit" value="削除">
+                    </form>
 
-    <div class = "menu">
-        <h3>氏名</h3>
-            {{ $kanri -> user -> name }}<br>
-    </div>
-
-    <div class = "menu">
-        <div>
-            <h3>出勤時刻</h3>
-        </div>
-            {{ $kanri -> created_at }}<br>
-    </div>
-
-    <div class = "menu">
-        <div>
-            <h3>備考</h3>
-        </div>
-            {{ $kanri -> bikou }}<br>
-    </div>
-
-    <div class = "menu">
-        <div>
-            <h3>コメント</h3>
-        </div>
-    </div>
-
-</div>
+                    <a href="/kanris/edit/{{$kanri->id}}" class="btn btn-primary btn-sm">編集</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    @else
+    <td></td>
+    @endif
+<!-- </div> -->
 
 @endforeach 
 

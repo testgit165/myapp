@@ -35,13 +35,31 @@ class KanriController extends Controller
         return redirect('/');
     }
 
+    public function destroy($id)
+    {
+        
+        $kanri = Kanri::findOrFail($id);
+        $kanri->delete();
 
+        return redirect('/');
+    }
 
+    public function edit($id)
+    {
+        $kanri = Kanri::find($id);
+        return view('edit', compact('kanri'));
+    }
 
+    public function update(Request $request, $id)
+    {
+        $kanri = Kanri::find($id);
+        $kanri->bikou = $request->bikou;
+        $kanri->info = $request->info;
 
+        $kanri->save();
 
-
-
+        return redirect('/');
+    }
 
 }
 

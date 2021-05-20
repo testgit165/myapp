@@ -1,24 +1,15 @@
 
-.navbar-nav{
-    
-}
-
 .index{
     display: flex;      
-    font-size: 30;        
-    justify-content: space-around;
-    padding-top: 60px;
-
+    font-size: 10;       
+    width: 100%; 
     padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    border: solid 3px #000000;
 }
 
-.menu{
+.menu{   
     font-family: 'Yu Gothic UI',sans-serif;
-    width: 20%;
-    height: 100px;
+    width: 40%;
+    height: 40px;
     overflow-y:scroll;
     word-break : break-all;
     -ms-overflow-style: none;    /* IE, Edge 対応 */
@@ -40,11 +31,35 @@
     font-size: 30px;
 }
 
-.container{
-    border: solid;
-    border-color: #1b6ece;
-}
-
 .yohaku{
     margin-top: 200px;
+}
+
+.button{
+    display: flex;  
+}
+
+.py-4{
+    margin-left: 20%;
+}
+
+.btn-warning{
+    margin-left: 83%;
+}
+
+.table{
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    width: 10%;
+
+    height: 40px;
+    overflow-y:scroll;
+    word-break : break-all;
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+}
+
+.clom-color{
+    color: rgb(55, 156, 8);
 }
