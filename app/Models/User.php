@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,7 @@ class User extends Authenticatable
 
     public function kanri()
     {
-        return $this->hasone('App\Models\Kanri');
+        return $this->hasmany('App\Models\Kanri');
     }
+
 }

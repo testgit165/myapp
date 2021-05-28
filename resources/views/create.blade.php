@@ -6,16 +6,8 @@
 @csrf
     <div class="yohaku">
 
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input value="出勤" type="radio" class="btn-check" name="info" id="btnradio1" autocomplete="off" checked="checked">
-            <label class="btn btn-outline-primary" for="btnradio1">出勤</label>
-
-            <input value="退勤" type="radio" class="btn-check" name="info" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">退勤</label>
-
-            <input value="不在" type="radio" class="btn-check" name="info" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">不在</label>
-        </div>
+        <input id="syukkin" name="info" type="radio" value="出勤" checked="checked"><label for="syukkin">出勤</label>
+        <input id="huzai" name="info" type="radio" value="不在"><label for="huzai">不在</label>
 
         <div class="form-bikou">
             <label for="bikou">備考</label><br>
