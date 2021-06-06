@@ -13,8 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(KanrisTableSeeder::class);
+        \App\Models\Kanri::factory()->create(); 
         
     }
 }

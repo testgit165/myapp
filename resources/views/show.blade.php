@@ -2,26 +2,10 @@
 
 @section('content')
 
-    @if (session('flash_message'))
-        <div class="flash_message">
-            {{ session('flash_message') }}
-        </div>
-    @endif
-    <div class = "top_btn">
-    <div class = "top_btn_l">
-        @if(Auth::user())
-            <a href="/kanris/show/{{Auth::id()}}" class="btn btn-primary">提出勤怠一覧</a>
-        @endif
-    </div>
-    <div class = "top_btn_r">    
-        <a href = "{{action('App\Http\Controllers\KanriController@create')}}" class="btn btn-warning">勤怠入力</a> 
-    </div>
-    </div><br>
-
+{{Auth::user()->name}}さんの勤怠一覧ページです<br><br><br>
 <table class = "table">
     <tr>
         <th class = "clom-color">@sortablelink('info', 'ステータス')</th>
-        <th class = "clom-color">@sortablelink('kanri->user->name', '氏名')</th>
         <th class = "clom-color">@sortablelink('created_at', '出勤日時')</th>
         <th class = "clom-color">@sortablelink('updated_at', '退勤日時')</th>
         <th class = "clom-color">@sortablelink('bikou', '備考')</th>
@@ -40,7 +24,6 @@
             @else
                 <td>{{ $kanri -> info }}</td>
             @endif
-                <td>{{$kanri->user->name}}</td>
 
             @if($kanri -> info == "不在")
                 <td>---</td>
@@ -77,3 +60,4 @@
 @endforeach 
 {{ $kanris->appends(request()->query())->links('pagination::bootstrap-4') }}
 @endsection
+

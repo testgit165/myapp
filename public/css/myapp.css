@@ -32,8 +32,17 @@
     margin-left: 20%;
 }
 
-.btn-warning{
-    margin-left: 88%;
+.top_btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top_btn_l{
+    margin-right: 2%;
+}
+
+.top_btn_r{
+    margin-right: 7%;
 }
 
 .table{

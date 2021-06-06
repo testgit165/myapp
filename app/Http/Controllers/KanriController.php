@@ -10,9 +10,7 @@ use Carbon\Carbon;
 
 class KanriController extends Controller
 {
-    public function index(Request $request){
-        
-        $kanris = Kanri::all();
+    public function index(Request $request){    
         $kanris = Kanri::sortable()->paginate(10);
         return view('index', compact('kanris')); 
     }
@@ -21,7 +19,6 @@ class KanriController extends Controller
     {
         if(Kanri::where('user_id', Auth::id())->whereDate('created_at',Carbon::today())->doesntExist()){
             $infos = Kanri::$infos;
-
             return view('create', compact('infos'));
         }else{
             return redirect('/')->with('flash_message', '本日の勤怠は提出済です！');
@@ -42,23 +39,42 @@ class KanriController extends Controller
     public function edit($id)
     {
         $kanri = Kanri::find($id);
-        return view('edit', compact('kanri'));
+        if($kanri->user_id == Auth::id()){
+            return view('edit', compact('kanri'));
+        }else{
+            return redirect('/');
+        }
     }
 
     public function update(Request $request, $id)
     {
         $kanri = Kanri::find($id);
-        // $kanri->bikou = $request->bikou;
-        $kanri->info = $request->info;
-        if($request->info == null){
-            return redirect(route('edit',['id'=>$id,]))->with('flash_message', '確認にチェックを入れてください！');
+        if($kanri->user_id == Auth::id()){
+            $kanri->info = $request->info;
+            if($request->info == null){
+                return redirect(route('edit',['id'=>$id,]))->with('flash_message', '確認にチェックを入れてください！');
+            }else{
+                $kanri->save();
+                return redirect('/');
+            }
         }else{
-        $kanri->save();
-        return redirect('/');
+            return redirect('/');
+        }
+    }
+
+    public function show(Request $request, $id)
+    {
+        $kanris = Kanri::where('user_id', $id)->sortable()->paginate(10);
+        if($id == Auth::id()){
+            return view('show', compact('kanris'));
+        }else{
+            return redirect('/');
         }
     }
 
 }
+
+//予備 $kanris = Kanri::sortable('user_id', $id)->paginate(10);
 
 
 

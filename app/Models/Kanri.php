@@ -12,7 +12,7 @@ class Kanri extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-
+    use HasFactory;
     use Sortable;
     public $sortable = ['user_id','bikou', 'info', 'created_at', 'updated_at'];
 
