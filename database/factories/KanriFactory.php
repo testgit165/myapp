@@ -25,7 +25,8 @@ class KanriFactory extends Factory
     public function definition()
     {
         return [
-            'bikou'=>"特になし",
+            'id'=>1,
+            'bikou'=>"テスト用投稿",
             'info'=>"出勤",
             'user_id'=>User::factory(),
             'created_at'=>"2020-10-10 00:00:00",

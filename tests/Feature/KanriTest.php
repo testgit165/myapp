@@ -2,14 +2,15 @@
 
 namespace Tests\Feature;
 
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Models\User;
 use App\Models\Kanri;
 
 class KanriTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -27,7 +28,13 @@ class KanriTest extends TestCase
         $response = $this->get('login')->assertStatus(200)->assertViewIs('auth.login');       
         
         //未ログイン状態で新規投稿ページへアクセスすると、ログインページへリダイレクトする
-        $response = $this->get('create')->assertStatus(302)->assertRedirect('http://localhost/login');         
+        $response = $this->get('create')->assertStatus(302)->assertRedirect('http://localhost/login');  
+
+        //勤怠のダミーデータ生成
+        $kanri = Kanri::factory()->create();
+        
+        //未ログイン状態で退勤入力ページへアクセスすると、ログインページへリダイレクトする
+        $response = $this->get(route('edit',1))->assertStatus(302)->assertRedirect('http://localhost/login');
     }
 
     public function test_register_login()
@@ -76,23 +83,6 @@ class KanriTest extends TestCase
         $kanri = Kanri::factory()->create();
         $id = $kanri->id;
         $response = $this->actingAs($user)->get(route('edit',$id));;
-       
-        
-        
-
-
-
-
-
-
-        //ログイン状態で新規投稿ができる
-        // $response = $this->post(route('store') ,[    
-        // 'bikou' => 'テストです',
-        // 'info' => '出勤',
-        // 'user_id' => $user->id,
-        // ])->assertStatus(302)->assertRedirect('/');
-
-
     }
 
 }

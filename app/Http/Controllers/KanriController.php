@@ -4,14 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kanri;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use DB;
 use Carbon\Carbon;
 
 class KanriController extends Controller
 {
-    public function index(Request $request){    
-        $kanris = Kanri::sortable()->paginate(10);
+    public function index(Request $request)
+    {   
+        if(($request->info || $request->name || $request->created_at || $request->updated_at || $request->bikou) == null){
+            $kanris = Kanri::orderBy('created_at', 'desc')->paginate(10); 
+        }else{
+            $query = Kanri::query();
+            
+            if(!empty($request->info)){
+                $query->where('info', $request->info);
+            }
+            
+            if(!empty($request->name)){
+                $query->where('user_id', $request->name);
+            }
+    
+            if(!empty($request->created_at)){
+                $query->where('created_at', 'like', '%' . $request->created_at . '%');
+            }
+
+            if(!empty($request->updated_at)){
+                $query->where('updated_at', 'like', '%' . $request->updated_at . '%');
+            }
+
+            if(!empty($request->bikou)){
+                $query->where('bikou', 'like', '%' . $request->bikou . '%');
+            }
+            $kanris = $query->orderBy('id', 'desc')->paginate(10);
+            //  dd($kanris);
+        }
         return view('index', compact('kanris')); 
     }
 
@@ -64,12 +92,17 @@ class KanriController extends Controller
 
     public function show(Request $request, $id)
     {
-        $kanris = Kanri::where('user_id', $id)->sortable()->paginate(10);
+        $kanris = Kanri::orderBy('created_at', 'desc')->paginate(10);
         if($id == Auth::id()){
             return view('show', compact('kanris'));
         }else{
             return redirect('/');
         }
+    }
+
+    public function search()
+    {
+        return view('search');
     }
 
 }

@@ -1,25 +1,4 @@
 
-.index{
-    display: flex;      
-    font-size: 10;       
-    width: 100%; 
-    padding: 0.5em 1em;
-}
-
-.menu{   
-    font-family: 'Yu Gothic UI',sans-serif;
-    width: 40%;
-    height: 40px;
-    overflow-y:scroll;
-    word-break : break-all;
-    -ms-overflow-style: none;    /* IE, Edge 対応 */
-    scrollbar-width: none;       /* Firefox 対応 */
-}
-
-.menu::-webkit-scrollbar {  /* Chrome, Safari 対応 */
-    display:none;
-}
-
 .nav-link{
    margin-left: 20px;
 }
@@ -28,8 +7,21 @@
     display: flex;  
 }
 
-.py-4{
+.yohaku{
     margin-left: 20%;
+}
+
+.top_index{
+    display: flex;
+}
+
+.top_left{
+    flex-shrink: 0;
+    width: 20%;
+    height: 750px;
+    background: #a6cfff;
+    padding-left: 3%;
+    padding-top: 1%;
 }
 
 .top_btn{
@@ -42,7 +34,7 @@
 }
 
 .top_btn_r{
-    margin-right: 7%;
+    margin-right: 5%;
 }
 
 .table{
@@ -58,7 +50,6 @@
     scrollbar-width: none;       /* Firefox 対応 */
 }
 
-
 .clom-color{
     color: rgb(55, 156, 8);
 }
@@ -66,5 +57,5 @@
 .flash_message{
     color: red;
     font-size: 20px;
+    margin-left: 20%;
 }
-
