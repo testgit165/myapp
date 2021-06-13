@@ -19,9 +19,9 @@
         <table class = "table">
             <tr>
                 @if($kanri -> info == "出勤")
-                    <td><font color="lightgreen">{{ $kanri -> info }}</font></td>
+                    <td><font color = "lightgreen">{{ $kanri -> info }}</font></td>
                 @elseif($kanri -> info == "退勤")
-                    <td><font color="red">{{ $kanri -> info }}</font></td>
+                    <td><font color = "red">{{ $kanri -> info }}</font></td>
                 @else
                     <td>{{ $kanri -> info }}</td>
                 @endif
@@ -41,13 +41,13 @@
                 @endif
                 <td>{{ $kanri -> bikou }}</td>
         
-        @if( Auth::id()  == $kanri->user_id)
+        @if( Auth::id() == $kanri->user_id)
                 <td>
                     <div class = "button">
                         @if($kanri -> created_at < $kanri -> updated_at || $kanri -> info == "不在")
                             
                         @else
-                            <a href="/kanris/edit/{{$kanri->id}}" class="btn btn-primary btn-sm">退勤</a>
+                            <a href = "/kanris/edit/{{$kanri->id}}" class = "btn btn-primary btn-sm">退勤</a>
                         @endunless
 
                     </div>

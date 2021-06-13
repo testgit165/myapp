@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @if (session('flash_message'))
+    @if(session('flash_message'))
         <div class="flash_message">
             {{ session('flash_message') }}
         </div>
@@ -23,18 +23,19 @@
     <div class = "top_index">
         <div class = "top_left">
             <h3>検索フォーム</h3><br>
-            <form method='POST' action="{{ route('index') }}" enctype="multipart/form-data">
+            <form method= 'POST' action= "{{ route('index') }}" enctype= "multipart/form-data">
             @csrf
-            <div class="form-info">
-                <label for="info">ステータス</label><br>
-                <input id="syukkin" name="info" type="radio" value="出勤"><label for="syukkin">出勤</label>
-                <input id="huzai" name="info" type="radio" value="不在"><label for="huzai">不在</label>
-                <input id="taikin" name="info" type="radio" value="退勤"><label for="taikin">退勤</label>
+
+            <div class = "form-info">
+                <label for= "info">ステータス</label><br>
+                <input id= "syukkin" name= "info" type= "radio" value= "出勤"><label for= "syukkin">出勤</label>
+                <input id= "huzai" name= "info" type= "radio" value= "不在"><label for= "huzai">不在</label>
+                <input id= "taikin" name= "info" type= "radio" value= "退勤"><label for= "taikin">退勤</label>
             </div>
 
-            <div class="form-name">
+            <div class = "form-name">
                 氏名<br>
-                <select name="name" style="width:70%">
+                <select name = "name" style= "width:70%">
                     <option></option>
                     @foreach($kanris->unique("user_id") as $kanri) 
                         <option value = "{{$kanri -> user_id}}">{{$kanri -> user -> name}}</option>
@@ -42,23 +43,33 @@
                 </select>
             </div>
 
-            <div class="form-created_at">
+            <div class = "form-created_at">
                 出勤日時<br>
+                    @if ($errors->first('created_at'))
+                        <div class="validate">    
+                            {{$errors -> first('created_at')}}
+                        </div>
+                    @endif
                 <input type = "text" name="created_at" style="width:70%">
             </div>
 
-            <div class="form-updated_at">
+            <div class = "form-updated_at">
                 退勤日時<br>
+                    @if ($errors->first('updated_at'))
+                        <div class="validate">    
+                            {{$errors -> first('updated_at')}}
+                        </div>
+                    @endif                
                 <input type = "text" name="updated_at" style="width:70%">
             </div>
 
-            <div class="form-bikou">
+            <div class = "form-bikou">
                 備考<br>
                 <input type = "text" name="bikou" style="width:70%">
             </div>
 
-            <div class="form-submit">
-                <button type="submit">検索</button>
+            <div class = "form-submit">
+                <button type = "submit">検索</button>
             </div>
             </form>
         </div>
@@ -109,7 +120,7 @@
                         @if($kanri -> created_at < $kanri -> updated_at || $kanri -> info == "不在")
                             
                         @else
-                            <a href="/kanris/edit/{{$kanri->id}}" class="btn btn-primary btn-sm">退勤</a>
+                            <a href = "/kanris/edit/{{$kanri->id}}" class="btn btn-primary btn-sm">退勤</a>
                         @endunless
 
                     </div>

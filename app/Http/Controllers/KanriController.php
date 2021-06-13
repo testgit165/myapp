@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class KanriController extends Controller
 {
@@ -16,6 +17,12 @@ class KanriController extends Controller
         if(($request->info || $request->name || $request->created_at || $request->updated_at || $request->bikou) == null){
             $kanris = Kanri::orderBy('created_at', 'desc')->paginate(10); 
         }else{
+
+            $validator = $request->validate([       
+                'created_at' => 'regex:/^[0-9]+$/ | nullable',
+                'updated_at' => 'regex:/^[0-9]+$/ | nullable',
+            ]);
+
             $query = Kanri::query();
             
             if(!empty($request->info)){
@@ -38,7 +45,6 @@ class KanriController extends Controller
                 $query->where('bikou', 'like', '%' . $request->bikou . '%');
             }
             $kanris = $query->orderBy('id', 'desc')->paginate(10);
-            //  dd($kanris);
         }
         return view('index', compact('kanris')); 
     }
@@ -106,8 +112,6 @@ class KanriController extends Controller
     }
 
 }
-
-//予備 $kanris = Kanri::sortable('user_id', $id)->paginate(10);
 
 
 
