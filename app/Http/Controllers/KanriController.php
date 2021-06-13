@@ -98,7 +98,7 @@ class KanriController extends Controller
 
     public function show(Request $request, $id)
     {
-        $kanris = Kanri::orderBy('created_at', 'desc')->paginate(10);
+        $kanris = Kanri::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
         if($id == Auth::id()){
             return view('show', compact('kanris'));
         }else{
